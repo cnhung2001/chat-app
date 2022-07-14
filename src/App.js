@@ -2,8 +2,6 @@ import React from "react";
 import "./App.css";
 //import { MenuOutlined } from "@ant-design/icons";
 import { Layout } from "antd";
-import images from "./assets/images";
-
 const { Header, Sider, Content, Footer } = Layout;
 
 const App = () => {
@@ -12,7 +10,6 @@ const App = () => {
       <Sider>
         <div class="header-channel-list">
           <span class="trigger">
-            {/* <img src={images.menu} alt="menu" /> */}
             <span class="logo-menu">
               <svg
                 width="20"
