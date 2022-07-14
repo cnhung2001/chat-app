@@ -1,6 +1,5 @@
 import React from "react";
 import "./App.css";
-//import { MenuOutlined } from "@ant-design/icons";
 import { Layout } from "antd";
 const { Header, Sider, Content, Footer } = Layout;
 
@@ -73,8 +72,51 @@ const App = () => {
           </div>
         </div>
         <div id="container-channel-list">
-          <div>Tìm kiếm</div>
-          <div class="list_channel_inter">Chat</div>
+          <div class="search-wrapper">
+            <input
+              type="text"
+              class="input-search"
+              placeholder="Tìm kiếm"
+            ></input>
+            <span class="icon-search">
+              <svg id="Capa_1" x="0px" y="0px" viewBox="0 0 192.904 192.904">
+                <path
+                  d="M190.707,180.101l-47.078-47.077c11.702-14.072,18.752-32.142,18.752-51.831C162.381,36.423,125.959,0,81.191,0 C36.422,0,0,36.423,0,81.193c0,44.767,36.422,81.187,81.191,81.187c19.688,0,37.759-7.049,51.831-18.751l47.079,47.078 c1.464,1.465,3.384,2.197,5.303,2.197c1.919,0,3.839-0.732,5.304-2.197C193.637,187.778,193.637,183.03,190.707,180.101z M15,81.193 C15,44.694,44.693,15,81.191,15c36.497,0,66.189,29.694,66.189,66.193c0,36.496-29.692,66.187-66.189,66.187 C44.693,147.38,15,117.689,15,81.193z"
+                  fill="#999"
+                ></path>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+                <g></g>
+              </svg>
+            </span>
+            <span class="btn-filter">Lọc</span>
+            <span role="img" aria-label="down" class="anticon anticon-down">
+              <svg
+                viewBox="64 64 896 896"
+                focusable="false"
+                data-icon="down"
+                width="1em"
+                height="1em"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path>
+              </svg>
+            </span>
+          </div>
+          <div class="list_channel_inter"></div>
         </div>
       </Sider>
       <Layout>
