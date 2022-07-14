@@ -10,7 +10,7 @@ const App = () => {
       <Sider>
         <div class="header-channel-list">
           <span class="trigger">
-            <span class="logo-menu">
+            <span class="logo-menu badge-icon">
               <svg
                 width="20"
                 height="30"
@@ -39,10 +39,10 @@ const App = () => {
                 </defs>
               </svg>
             </span>
-            <div class="name-website" title="Chat nội bộ"></div>Chat nội bộ
+            <div class="name-website" title="Chat nội bộ">Chat nội bộ </div>
           </span>
           <div class="noti-website">
-            <span class="noti-logo">
+            <span class="noti-logo badge-icon">
               <svg width="20" height="21" viewBox="0 0 20 21" fill="none">
                 <g>
                   <path
