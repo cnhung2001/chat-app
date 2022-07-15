@@ -5,7 +5,7 @@
     min-height: 50px;
     line-height: 24px;
     min-width: 300px;
-    max-width: 310px;
+    max-width: 320px;
     border-bottom: ridge #666 1px;
 }
 
@@ -60,4 +60,12 @@
     vertical-align: top;
 }
 
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(168, 162, 162);
+    border-radius: 2px;
+  }
 
