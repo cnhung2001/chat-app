@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import { Layout } from "antd";
+import Channel from "./components/channel.jsx";
 const { Header, Sider, Content, Footer } = Layout;
 
 const App = () => {
@@ -116,7 +117,22 @@ const App = () => {
               </svg>
             </span>
           </div>
-          <div class="list_channel_inter"></div>
+          <div class="list_channel_inter">
+            <div>
+              <Channel name="Ban Văn Hóa Truyền Thông" avatar="https://cache.giaohangtietkiem.vn/d/9ccd62da444b43329c80799a0b5e675b.jpg" lastMessage="Cùng lên kế hoạch chuẩn bị cho sức khỏe của cả sống bạn nhé!" LMTime="20:20"/>
+              <Channel name="Ban Văn Hóa Truyền Thông" avatar="https://cache.giaohangtietkiem.vn/d/9ccd62da444b43329c80799a0b5e675b.jpg" lastMessage="Cùng lên kế hoạch chuẩn bị cho sức khỏe của cả sống bạn nhé!" LMTime="20:20"/>
+              <Channel name="Ban Văn Hóa Truyền Thông" avatar="https://cache.giaohangtietkiem.vn/d/9ccd62da444b43329c80799a0b5e675b.jpg" lastMessage="Cùng lên kế hoạch chuẩn bị cho sức khỏe của cả sống bạn nhé!" LMTime="20:20"/>
+              <Channel name="Ban Văn Hóa Truyền Thông" avatar="https://cache.giaohangtietkiem.vn/d/9ccd62da444b43329c80799a0b5e675b.jpg" lastMessage="Cùng lên kế hoạch chuẩn bị cho sức khỏe của cả sống bạn nhé!" LMTime="20:20"/>
+              <Channel name="Ban Văn Hóa Truyền Thông" avatar="https://cache.giaohangtietkiem.vn/d/9ccd62da444b43329c80799a0b5e675b.jpg" lastMessage="Cùng lên kế hoạch chuẩn bị cho sức khỏe của cả sống bạn nhé!" LMTime="20:20"/>
+              <Channel name="Ban Văn Hóa Truyền Thông" avatar="https://cache.giaohangtietkiem.vn/d/9ccd62da444b43329c80799a0b5e675b.jpg" lastMessage="Cùng lên kế hoạch chuẩn bị cho sức khỏe của cả sống bạn nhé!" LMTime="20:20"/>
+              <Channel name="Ban Văn Hóa Truyền Thông" avatar="https://cache.giaohangtietkiem.vn/d/9ccd62da444b43329c80799a0b5e675b.jpg" lastMessage="Cùng lên kế hoạch chuẩn bị cho sức khỏe của cả sống bạn nhé!" LMTime="20:20"/>
+              <Channel name="Ban Văn Hóa Truyền Thông" avatar="https://cache.giaohangtietkiem.vn/d/9ccd62da444b43329c80799a0b5e675b.jpg" lastMessage="Cùng lên kế hoạch chuẩn bị cho sức khỏe của cả sống bạn nhé!" LMTime="20:20"/>
+              <Channel name="Ban Văn Hóa Truyền Thông" avatar="https://cache.giaohangtietkiem.vn/d/9ccd62da444b43329c80799a0b5e675b.jpg" lastMessage="Cùng lên kế hoạch chuẩn bị cho sức khỏe của cả sống bạn nhé!" LMTime="20:20"/>
+              <Channel name="Ban Văn Hóa Truyền Thông" avatar="https://cache.giaohangtietkiem.vn/d/9ccd62da444b43329c80799a0b5e675b.jpg" lastMessage="Cùng lên kế hoạch chuẩn bị cho sức khỏe của cả sống bạn nhé!" LMTime="20:20"/>
+              <Channel name="Ban Văn Hóa Truyền Thông" avatar="https://cache.giaohangtietkiem.vn/d/9ccd62da444b43329c80799a0b5e675b.jpg" lastMessage="Cùng lên kế hoạch chuẩn bị cho sức khỏe của cả sống bạn nhé!" LMTime="20:20"/>
+              
+            </div>
+          </div>
         </div>
       </Sider>
       <Layout>
