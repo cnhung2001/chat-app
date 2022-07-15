@@ -8,10 +8,10 @@ import {
   SearchOutlined,
 } from "@ant-design/icons";
 import { fetchData } from "./utils/fetchData";
-=======
+
 import { Layout } from "antd";
 import Channel from "./components/channel.jsx";
->>>>>>> bc1f0b1ff1db84d4c2f12f4d17fc70c0e8ec0073
+
 const { Header, Sider, Content, Footer } = Layout;
 
 const App = () => {
