@@ -1,5 +1,4 @@
 import "./App.css";
-<<<<<<< HEAD
 import React, { useEffect, useState } from "react";
 import { Layout, Badge, Spin } from "antd";
 import {
@@ -67,11 +66,11 @@ const App = () => {
               <DownOutlined style={{ fontSize: 10, marginLeft: "3px" }} />
             </span>
           </div>
-<<<<<<< HEAD
+
           <div className="list_channel_inter">
             {channels &&
               channels.map((channel) => <p>{channel.channel_name}</p>)}
-=======
+
           <div class="list_channel_inter">
             <div>
               <Channel name="Ban Văn Hóa Truyền Thông" avatar="https://cache.giaohangtietkiem.vn/d/9ccd62da444b43329c80799a0b5e675b.jpg" lastMessage="Cùng lên kế hoạch chuẩn bị cho sức khỏe của cả sống bạn nhé!" LMTime="20:20"/>
@@ -87,7 +86,7 @@ const App = () => {
               <Channel name="Ban Văn Hóa Truyền Thông" avatar="https://cache.giaohangtietkiem.vn/d/9ccd62da444b43329c80799a0b5e675b.jpg" lastMessage="Cùng lên kế hoạch chuẩn bị cho sức khỏe của cả sống bạn nhé!" LMTime="20:20"/>
               
             </div>
->>>>>>> bc1f0b1ff1db84d4c2f12f4d17fc70c0e8ec0073
+
           </div>
         </div>
       </Sider>
