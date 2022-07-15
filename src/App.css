@@ -41,11 +41,16 @@
 .search-wrapper {
   position: relative;
   width: 100%;
+<<<<<<< HEAD
   display: -webkit-flex;
   display: flex;
   -webkit-justify-content: center;
   justify-content: center;
   height: 44px;
+=======
+  position: relative;
+  flex-direction: column;
+>>>>>>> bc1f0b1ff1db84d4c2f12f4d17fc70c0e8ec0073
 }
 
 .search-wrapper .input-search {
@@ -89,3 +94,60 @@
   cursor: pointer;
   color: #959595;
 }
+<<<<<<< HEAD
+=======
+
+.anticon {
+  text-align: center;
+  position: absolute;
+  top: 47%;
+  right: 21px;
+  color: #959595;
+  font-style: normal;
+  font-size: 10px;
+  cursor: pointer;
+}
+.badge-icon {
+  box-sizing: border-box;
+  margin: 5px 15px 0 0;
+  color: black;
+  font-size: 14px;
+  position: relative;
+  display: inline-block;
+  line-height: 1;
+}
+
+.name-website {
+  color: black;
+  font-size: 25px;
+  font-weight: 700;
+  overflow: hidden;
+  line-height: 2;
+  text-overflow: ellipsis;
+  width: 50px;
+  flex: 1 1;
+}
+
+.noti-website {
+  margin: 16px 0 11px 0;
+  cursor: pointer;
+  padding-right: 20px;
+  align-items: center;
+}
+
+.ant-layout-sider {
+  min-width: 340px;
+}
+
+.list_channel_inter {
+  width: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  min-height: 0;
+  max-height: 650px;
+  position: relative;
+  padding-left: 6px;
+  flex: 1 1;
+  display: flex;
+}
+>>>>>>> bc1f0b1ff1db84d4c2f12f4d17fc70c0e8ec0073
