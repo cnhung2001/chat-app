@@ -49,6 +49,7 @@
   display: flex;
   width: 100%;
   position: relative;
+  flex-direction: column;
 }
 
 .input-search {
@@ -118,4 +119,20 @@
   cursor: pointer;
   padding-right: 20px;
   align-items: center;
+}
+
+.ant-layout-sider {
+  min-width: 340px;
+}
+
+.list_channel_inter {
+  width: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  min-height: 0;
+  max-height: 650px;
+  position: relative;
+  padding-left: 6px;
+  flex: 1 1;
+  display: flex;
 }
