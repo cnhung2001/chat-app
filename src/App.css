@@ -1,121 +1,91 @@
 @import "~antd/dist/antd.css";
 
-.site-layout .site-layout-background {
+.site-layout .site-layout-background .ant-layout-header {
   background: #fff;
 }
 
 .ant-layout-sider-children {
   background: white;
   height: 100vh;
-  width: 340px;
-  border-right: 3px solid #f4f4f4;
+  border-right: 2px solid #f4f4f4;
 }
 
 .ant-layout {
   background-color: #fff;
+  position: relative;
+  display: flex;
+  justify-content: center;
 }
 
 .header-channel-list {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin: 0px 0px 4px;
+  padding: 8px 12px;
 }
 
-.trigger {
-  height: 54px;
-  width: 300px;
-  padding: 5px 12px;
+.header-left {
   display: flex;
   align-items: center;
 }
 
-.noti-website {
-  margin-bottom: -6px;
-  cursor: pointer;
-  padding-right: 20px;
-  height: 27px;
-  width: 40px;
-  align-items: center;
+.name-website {
+  margin-left: 15px;
+  color: #000;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 2;
 }
 
 .search-wrapper {
-  width: 340px;
+  position: relative;
+  width: 100%;
+  display: -webkit-flex;
   display: flex;
-  height: 44px;
+  -webkit-justify-content: center;
   justify-content: center;
-  position: relative;
+  height: 44px;
 }
 
-#container-channel-list {
-  display: flex;
-  width: 100%;
-  position: relative;
-}
-
-.input-search {
-  width: 100%;
+.search-wrapper .input-search {
+  outline: none;
   border: none;
+  width: 100%;
   margin: 0 8px;
   padding: 4px 0 4px 40px;
-  border-radius: 10px;
   font-size: 14px !important;
-  background-color: #f4f4f4;
+  border-radius: 10px;
+  background: #f4f4f4;
+  touch-action: manipulation;
+  -webkit-appearance: none;
 }
 
 .icon-search {
-  width: 14px;
   position: absolute;
-  top: 35%;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
   left: 24px;
   color: #999;
+  display: -webkit-flex;
   display: flex;
+  -webkit-align-items: center;
   align-items: center;
 }
 
 .btn-filter {
+  font-size: 14px;
+  display: -webkit-flex;
   display: flex;
+  -webkit-align-items: center;
   align-items: center;
   position: absolute;
-  top: 5%;
-  right: 25px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  right: 12px;
   padding: 10px;
   cursor: pointer;
   color: #959595;
-}
-
-.anticon {
-  text-align: center;
-  position: absolute;
-  top: 47%;
-  right: 21px;
-  color: #959595;
-  font-style: normal;
-  font-size: 10px;
-  cursor: pointer;
-}
-.badge-icon {
-  box-sizing: border-box;
-  margin: 5px 15px 0 0;
-  color: black;
-  font-size: 14px;
-  position: relative;
-  display: inline-block;
-  line-height: 1;
-}
-
-.name-website {
-  color: black;
-  font-size: 25px;
-  font-weight: 700;
-  overflow: hidden;
-  line-height: 2;
-  text-overflow: ellipsis;
-  width: 50px;
-  flex: 1 1;
-}
-
-.noti-website {
-  margin: 16px 0 11px 0;
-  cursor: pointer;
-  padding-right: 20px;
-  align-items: center;
 }
