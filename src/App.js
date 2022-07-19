@@ -9,6 +9,7 @@ import {
 } from "@ant-design/icons";
 import { fetchData } from "./utils/fetchData";
 import Channel from "./components/channel.jsx";
+import HeaderChat from "./components/Header/HeaderChat";
 
 const { Header, Sider, Content, Footer } = Layout;
 
@@ -66,8 +67,8 @@ const App = () => {
           </div>
 
           <div className="list_channel_inter">
-            {channels &&
-              channels.map((channel) => <p>{channel.channel_name}</p>)}
+            {/* {channels &&
+              channels.map((channel) => <p>{channel.channel_name}</p>)} */}
 
             <div class="list_channel_inter">
               <div>
@@ -143,8 +144,10 @@ const App = () => {
         </div>
       </Sider>
       <Layout>
-        <Header>Header</Header>
-        <Content>Content</Content>
+        <Header>
+          <HeaderChat />
+        </Header>
+        <Content>content</Content>
         <Footer>Footer</Footer>
       </Layout>
     </Layout>

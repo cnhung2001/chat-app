@@ -1,0 +1,39 @@
+.chat-view-header {
+  display: -webkit-flex;
+  display: flex;
+  background: #fff;
+  border-bottom: 1px solid #efefef;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.header-channel-name {
+  font-size: 20px;
+  text-align: center;
+  font-weight: 700;
+  cursor: pointer;
+  margin-right: 4px;
+  white-space: nowrap;
+  /* overflow: hidden; */
+  /* text-overflow: ellipsis; */
+  display: block;
+}
+
+.header-channel-active {
+  padding: 4px 0 0 8px;
+  font-size: 14px;
+  color: #828282;
+  position: relative;
+}
+
+.header-channel-active-member {
+  opacity: 1;
+}
+
+.header-right {
+  /* display: grid;
+  place-items: center; */
+  display: flex;
+  align-items: center;
+}
