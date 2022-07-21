@@ -89,3 +89,8 @@
   cursor: pointer;
   color: #959595;
 }
+
+.list_channel_inter {
+  overflow-y: scroll;
+  max-height: 640px;
+}

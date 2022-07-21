@@ -7,13 +7,16 @@ import {
   MenuOutlined,
   SearchOutlined,
 } from "@ant-design/icons";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { fetchData } from "./utils/fetchData";
 import Channel from "./components/channel.jsx";
 
 const { Header, Sider, Content, Footer } = Layout;
 
+
+
 const App = () => {
-  const [channels, setChannels] = useState([]);
+  const [channelList, setChannels] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -66,79 +69,17 @@ const App = () => {
           </div>
 
           <div className="list_channel_inter">
-            {channels &&
-              channels.map((channel) => <p>{channel.channel_name}</p>)}
-
-            <div class="list_channel_inter">
+            {channelList &&
+              channelList.map((channel) => 
               <div>
                 <Channel
-                  name="Ban Văn Hóa Truyền Thông"
-                  avatar="https://cache.giaohangtietkiem.vn/d/9ccd62da444b43329c80799a0b5e675b.jpg"
-                  lastMessage="Cùng lên kế hoạch chuẩn bị cho sức khỏe của cả sống bạn nhé!"
-                  LMTime="20:20"
-                />
-                <Channel
-                  name="Ban Văn Hóa Truyền Thông"
-                  avatar="https://cache.giaohangtietkiem.vn/d/9ccd62da444b43329c80799a0b5e675b.jpg"
-                  lastMessage="Cùng lên kế hoạch chuẩn bị cho sức khỏe của cả sống bạn nhé!"
-                  LMTime="20:20"
-                />
-                <Channel
-                  name="Ban Văn Hóa Truyền Thông"
-                  avatar="https://cache.giaohangtietkiem.vn/d/9ccd62da444b43329c80799a0b5e675b.jpg"
-                  lastMessage="Cùng lên kế hoạch chuẩn bị cho sức khỏe của cả sống bạn nhé!"
-                  LMTime="20:20"
-                />
-                <Channel
-                  name="Ban Văn Hóa Truyền Thông"
-                  avatar="https://cache.giaohangtietkiem.vn/d/9ccd62da444b43329c80799a0b5e675b.jpg"
-                  lastMessage="Cùng lên kế hoạch chuẩn bị cho sức khỏe của cả sống bạn nhé!"
-                  LMTime="20:20"
-                />
-                <Channel
-                  name="Ban Văn Hóa Truyền Thông"
-                  avatar="https://cache.giaohangtietkiem.vn/d/9ccd62da444b43329c80799a0b5e675b.jpg"
-                  lastMessage="Cùng lên kế hoạch chuẩn bị cho sức khỏe của cả sống bạn nhé!"
-                  LMTime="20:20"
-                />
-                <Channel
-                  name="Ban Văn Hóa Truyền Thông"
-                  avatar="https://cache.giaohangtietkiem.vn/d/9ccd62da444b43329c80799a0b5e675b.jpg"
-                  lastMessage="Cùng lên kế hoạch chuẩn bị cho sức khỏe của cả sống bạn nhé!"
-                  LMTime="20:20"
-                />
-                <Channel
-                  name="Ban Văn Hóa Truyền Thông"
-                  avatar="https://cache.giaohangtietkiem.vn/d/9ccd62da444b43329c80799a0b5e675b.jpg"
-                  lastMessage="Cùng lên kế hoạch chuẩn bị cho sức khỏe của cả sống bạn nhé!"
-                  LMTime="20:20"
-                />
-                <Channel
-                  name="Ban Văn Hóa Truyền Thông"
-                  avatar="https://cache.giaohangtietkiem.vn/d/9ccd62da444b43329c80799a0b5e675b.jpg"
-                  lastMessage="Cùng lên kế hoạch chuẩn bị cho sức khỏe của cả sống bạn nhé!"
-                  LMTime="20:20"
-                />
-                <Channel
-                  name="Ban Văn Hóa Truyền Thông"
-                  avatar="https://cache.giaohangtietkiem.vn/d/9ccd62da444b43329c80799a0b5e675b.jpg"
-                  lastMessage="Cùng lên kế hoạch chuẩn bị cho sức khỏe của cả sống bạn nhé!"
-                  LMTime="20:20"
-                />
-                <Channel
-                  name="Ban Văn Hóa Truyền Thông"
-                  avatar="https://cache.giaohangtietkiem.vn/d/9ccd62da444b43329c80799a0b5e675b.jpg"
-                  lastMessage="Cùng lên kế hoạch chuẩn bị cho sức khỏe của cả sống bạn nhé!"
-                  LMTime="20:20"
-                />
-                <Channel
-                  name="Ban Văn Hóa Truyền Thông"
-                  avatar="https://cache.giaohangtietkiem.vn/d/9ccd62da444b43329c80799a0b5e675b.jpg"
-                  lastMessage="Cùng lên kế hoạch chuẩn bị cho sức khỏe của cả sống bạn nhé!"
+                  name = {channel.channel_name}
+                  avatar={channel.author.avatar}
+                  lastMessage={channel.last_message.text}
                   LMTime="20:20"
                 />
               </div>
-            </div>
+              )}
           </div>
         </div>
       </Sider>
