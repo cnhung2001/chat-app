@@ -68,8 +68,6 @@ const App = () => {
           <div className="list_channel_inter">
             {channels &&
               channels.map((channel) => <p>{channel.channel_name}</p>)}
-
-            <div className="list_channel_inter">
               
             </div>
           </div>
