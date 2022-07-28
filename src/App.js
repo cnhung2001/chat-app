@@ -5,9 +5,10 @@ import {
   SearchOutlined,
 } from "@ant-design/icons";
 import { Badge, Layout } from "antd";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import Channel from "./components/channel.jsx";
+import { fetchData } from "./utils/fetchData";
 import ChatView from "./components/ChatView/ChatView";
 import FooterChat from "./components/Footer/FooterChat";
 import HeaderChat from "./components/Header/HeaderChat";
@@ -15,23 +16,23 @@ import HeaderChat from "./components/Header/HeaderChat";
 const { Header, Sider, Content, Footer } = Layout;
 
 const App = () => {
-  // const [channels, setChannels] = useState([]);
-  // const [loading, setLoading] = useState(false);
+  const [channels, setChannels] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-  // useEffect(() => {
-  //   const fetchChannels = async () => {
-  //     try {
-  //       setLoading(true);
-  //       const data = await fetchData("https://chat.ghtk.vn/api/v3/channels");
-  //       setChannels(data);
-  //     } catch (error) {
-  //       console.log(error);
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   };
-  //   fetchChannels();
-  // }, []);
+  useEffect(() => {
+    const fetchChannels = async () => {
+      try {
+        setLoading(true);
+        const data = await fetchData("https://chat.ghtk.vn/api/v3/channels");
+        setChannels(data);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchChannels();
+  }, []);
 
   return (
     <Layout>
@@ -76,6 +77,7 @@ const App = () => {
                 LMTime="20:20"
               />
             </div>
+            )}
           </div>
         </div>
       </Sider>
