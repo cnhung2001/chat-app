@@ -16,7 +16,7 @@ const { Header, Sider, Content, Footer } = Layout;
 
 
 const App = () => {
-  const [channelList, setChannels] = useState([]);
+  const etChannels] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -37,60 +37,58 @@ const App = () => {
   if (loading) return <Spin />;
 
   return (
-    <Router>
-      <Layout>
-        <Sider width={340}>
-          <div className="header-channel-list">
-            <div className="header-left">
-              <Badge count={5}>
-                <MenuOutlined style={{ fontSize: 18 }} />
-              </Badge>
-              <div className="name-website" title="Chat nội bộ">
-                Chat nội bộ
-              </div>
-            </div>
-            <div className="noti-website">
-              <BellOutlined style={{ color: "#069255", fontSize: 20 }} />
+    <Layout>
+      <Sider width={340}>
+        <div className="header-channel-list">
+          <div className="header-left">
+            <Badge count={5}>
+              <MenuOutlined style={{ fontSize: 18 }} />
+            </Badge>
+            <div className="name-website" title="Chat nội bộ">
+              Chat nội bộ
             </div>
           </div>
-          <div className="container-channel-list">
-            <div className="search-wrapper">
-              <input
-                type="text"
-                className="input-search"
-                placeholder="Tìm kiếm"
-              ></input>
-              <span className="icon-search">
-                <SearchOutlined style={{ fontSize: 16 }} />
-              </span>
-              <span className="btn-filter">
-                Lọc
-                <DownOutlined style={{ fontSize: 10, marginLeft: "3px" }} />
-              </span>
-            </div>
+          <div className="noti-website">
+            <BellOutlined style={{ color: "#069255", fontSize: 20 }} />
+          </div>
+        </div>
+        <div className="container-channel-list">
+          <div className="search-wrapper">
+            <input
+              type="text"
+              className="input-search"
+              placeholder="Tìm kiếm"
+            ></input>
+            <span className="icon-search">
+              <SearchOutlined style={{ fontSize: 16 }} />
+            </span>
+            <span className="btn-filter">
+              Lọc
+              <DownOutlined style={{ fontSize: 10, marginLeft: "3px" }} />
+            </span>
+          </div>
 
-            <div className="list_channel_inter">
-              {channelList &&
-                channelList.map((channel) => 
-                <div>
-                    <Channel
-                        name = {channel.channel_name}
-                        avatar={channel.author.avatar}
-                        lastMessage={channel.last_message.text}
-                        LMTime="20:20"
-                    />
-                </div>
-                )}
-            </div>
+          <div className="list_channel_inter">
+            {channels &&
+              channelList.map((channel) => 
+              <div>
+                  <Channel
+                      name = {channel.channel_name}
+                      avatar={channel.author.avatar}
+                      lastMessage={channel.last_message.text}
+                      LMTime="20:20"
+                  />
+              </div>
+              )}
           </div>
-        </Sider>
-        <Layout>
-          <Header>Header</Header>
-          <Content>Content</Content>
-          <Footer>Footer</Footer>
-        </Layout>
+        </div>
+      </Sider>
+      <Layout>
+        <Header>Header</Header>
+        <Content>Content</Content>
+        <Footer>Footer</Footer>
       </Layout>
-    </Router>
+    </Layout>
   );
 };
 
