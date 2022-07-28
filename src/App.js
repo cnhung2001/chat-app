@@ -67,8 +67,14 @@ const App = () => {
 
           <div className="list_channel_inter">
             {channels &&
-              channels.map((channel) => <p>{channel.channel_name}</p>)}
-              
+              channels.map((channel) => 
+            <div>  
+              <Channel
+                name = {channel.channel_name}
+                avatar={channel.author.avatar}
+                lastMessage={channel.last_message.text}
+                LMTime="20:20"
+              />
             </div>
           </div>
         </div>
