@@ -70,7 +70,7 @@ const App = () => {
 
           <div className="list_channel_inter">
             {channels &&
-              channelList.map((channel) => 
+              channels.map((channel) => 
               <div>
                   <Channel
                       name = {channel.channel_name}
