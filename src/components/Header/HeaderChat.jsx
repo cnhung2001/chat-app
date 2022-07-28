@@ -3,7 +3,7 @@ import React from "react";
 import "./header.css";
 
 const HeaderChat = (props) => {
-  const { avatar, name } = props;
+  // const { avatar, name } = props;
 
   return (
     <div className="chat-view-header">
