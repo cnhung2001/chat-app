@@ -7,13 +7,10 @@ import {
   MenuOutlined,
   SearchOutlined,
 } from "@ant-design/icons";
-import { BrowserRouter as Router, Route, Link} from "react-router-dom";
 import { fetchData } from "./utils/fetchData";
 import Channel from "./components/channel.jsx";
 
 const { Header, Sider, Content, Footer } = Layout;
-
-
 
 const App = () => {
   const [channels, setChannels] = useState([]);
