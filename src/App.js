@@ -16,7 +16,7 @@ const { Header, Sider, Content, Footer } = Layout;
 
 
 const App = () => {
-  const etChannels] = useState([]);
+  const [channels, etChannels] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
