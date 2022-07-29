@@ -4,10 +4,6 @@ import { Spin } from "antd";
 import ChatViewItem from "./ChatViewItem";
 import "./ChatView.css";
 
-const userInfo = {
-  id: "4478874723614148974",
-};
-
 const ChatView = () => {
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(false);

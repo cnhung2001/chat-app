@@ -10,7 +10,7 @@ const userInfo = {
   id: "4478874723614148974",
 };
 
-const ChatViewItem = ({ message, isGroup, index }) => {
+const ChatViewItem = ({ message, isGroup }) => {
   return (
     <div
       className={
@@ -42,6 +42,7 @@ const ChatViewItem = ({ message, isGroup, index }) => {
               )
             )}
           </div>
+
           {message.text && <div className="message-text">{message.text}</div>}
         </div>
       </div>

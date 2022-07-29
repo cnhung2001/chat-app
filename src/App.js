@@ -4,7 +4,7 @@ import {
   MenuOutlined,
   SearchOutlined,
 } from "@ant-design/icons";
-import { Badge, Layout } from "antd";
+import { Badge, Layout, Spin } from "antd";
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import Channel from "./components/channel.jsx";
@@ -33,7 +33,7 @@ const App = () => {
     };
     fetchChannels();
   }, []);
-
+  if (loading) return <Spin />;
   return (
     <Layout>
       <Sider width={340}>
@@ -68,16 +68,16 @@ const App = () => {
 
           <div className="list_channel_inter">
             {channels &&
-              channels.map((channel) => 
-            <div>  
-              <Channel
-                name = {channel.channel_name}
-                avatar={channel.author.avatar}
-                lastMessage={channel.last_message.text}
-                LMTime="20:20"
-              />
-            </div>
-            )}
+              channels.map((channel) => (
+                <div>
+                  <Channel
+                    name={channel.channel_name}
+                    avatar={channel.author.avatar}
+                    lastMessage={channel.last_message.text}
+                    LMTime="20:20"
+                  />
+                </div>
+              ))}
           </div>
         </div>
       </Sider>

@@ -51,6 +51,7 @@ const menu = (
     ]}
   />
 );
+
 const FooterChat = () => {
   return (
     <div className="chat-view-footer">
@@ -63,11 +64,15 @@ const FooterChat = () => {
         <div className="compile-content">
           <div className="compile-content-editer">
             <div className="editor-message">
-              <input
-                type="text"
-                className="input-message"
-                placeholder="Nhập nội dung tin nhắn"
-              ></input>
+              <form>
+                <label>
+                  <input
+                    type="text"
+                    className="input-message"
+                    placeholder="Nhập nội dung tin nhắn"
+                  ></input>
+                </label>
+              </form>
             </div>
             <div className="menu-footer-icon">
               <div className="footer-icon">
