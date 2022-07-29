@@ -6,7 +6,7 @@
     line-height: 24px;
     min-width: 320px;
     max-width: 330px;
-    border-bottom: ridge 1px rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid hsla(0, 0%, 91%, 0.4588235294117647);
 }
 
 .channel_sum::selection {
@@ -14,7 +14,7 @@
 }
 
 .channel_sum:hover {
-    background-color: rgb(216, 255, 240);
+    background-color: #eaf7fa;
 }
 
 .channel_avatar {
