@@ -103,7 +103,9 @@
 }
 
 .list_channel_inter {
+  position: absolute;
   overflow-y: scroll;
-  max-height: 640px;
+  height: 82%;
+  max-height: 82%;
 }
 
