@@ -80,7 +80,7 @@ const App = () => {
                       name = {channel.channel_name}
                       avatar={channel.author.avatar}
                       lastMessage={channel.last_message.text}
-                      LMTime="20:20"
+                      LMTime={channel.last_message.created_at.slice(5, 10)}
                     />
                   </div>
                 </Link>
