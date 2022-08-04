@@ -74,18 +74,18 @@ const FooterChat = ({ sendMessage }) => {
   const [preview, setPreview] = useState();
 
   // create a preview as a side effect, whenever selected file is changed
-  useEffect(() => {
-    if (!selectedFile) {
-      setPreview(undefined);
-      return;
-    }
+  // useEffect(() => {
+  //   if (!selectedFile) {
+  //     setPreview(undefined);
+  //     return;
+  //   }
 
-    const objectUrl = URL.createObjectURL(selectedFile);
-    setPreview(objectUrl);
+  //   const objectUrl = URL.createObjectURL(selectedFile);
+  //   setPreview(objectUrl);
 
-    // free memory when ever this component is unmounted
-    return () => URL.revokeObjectURL(objectUrl);
-  }, [selectedFile]);
+  //   // free memory when ever this component is unmounted
+  //   return () => URL.revokeObjectURL(objectUrl);
+  // }, [selectedFile]);
 
   const handleMessageTextChange = (e) => {
     setMessageText(e.target.value);
@@ -160,12 +160,12 @@ const FooterChat = ({ sendMessage }) => {
                   multiple
                   className="file-input"
                 />
-                {selectedFile && (
+                {
                   <PictureOutlined
                     onClick={() => fileInputRef?.current?.click()}
                     style={{ fontSize: 24, color: "#14a05b" }}
                   />
-                )}
+                }
               </div>
               <div className="footer-icon">
                 <SmileOutlined style={{ fontSize: 24, color: "#14a05b" }} />
