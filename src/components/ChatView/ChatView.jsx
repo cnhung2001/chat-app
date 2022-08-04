@@ -1,24 +1,31 @@
 import React, { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { fetchData } from "../../utils/fetchData";
-import { Spin } from "antd";
 import ChatViewItem from "./ChatViewItem";
 import "./ChatView.css";
+import Loading from "../common/Loading/Loading";
 
-const ChatView = () => {
+const ChatView = ({ defaultChannel, isSendMessage }) => {
+  let [searchParams] = useSearchParams();
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    document
+      .querySelector("#flag-scroll")
+      .scrollIntoView({ behavior: "smooth", block: "start" });
+
     const fetchMessages = async () => {
       try {
         setLoading(true);
         const data = await fetchData(
-          "https://chat.ghtk.vn/api/v3/messages?channel_id=1676242464193100389&limit=50"
+          `https://chat.ghtk.vn/api/v3/messages?channel_id=${
+            searchParams.get("channel_id") || defaultChannel.channel_id
+          }&limit=50`
         );
         const sortedMessage = data.sort(
           (a, b) => new Date(a.created_at) - new Date(b.created_at)
         );
-        console.log(sortedMessage);
         setMessages(sortedMessage);
       } catch (error) {
         console.log(error);
@@ -27,9 +34,9 @@ const ChatView = () => {
       }
     };
     fetchMessages();
-  }, []);
+  }, [searchParams, isSendMessage]);
 
-  if (loading) return <Spin />;
+  if (loading) return <Loading />;
 
   return (
     <div className="chat-view-message">
@@ -42,14 +49,16 @@ const ChatView = () => {
               isGroup = true;
 
             return (
-              <ChatViewItem
-                message={message}
-                key={message.id}
-                isGroup={isGroup}
-                // index={index}
-              />
+              <>
+                <ChatViewItem
+                  message={message}
+                  key={message.id}
+                  isGroup={isGroup}
+                />
+              </>
             );
           })}
+        <div id="flag-scroll"></div>
       </div>
     </div>
   );

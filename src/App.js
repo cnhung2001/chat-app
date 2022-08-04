@@ -4,21 +4,22 @@ import {
   MenuOutlined,
   SearchOutlined,
 } from "@ant-design/icons";
-import { Badge, Layout, Spin } from "antd";
+import { Badge, Layout } from "antd";
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 import "./App.css";
-import Channel from "./components/channel.jsx";
-import { fetchData } from "./utils/fetchData";
+import Channel from "./components/Channel/Channel.jsx";
 import ChatView from "./components/ChatView/ChatView";
 import FooterChat from "./components/Footer/FooterChat";
 import HeaderChat from "./components/Header/HeaderChat";
+import { fetchData } from "./utils/fetchData";
 
 const { Header, Sider, Content, Footer } = Layout;
 
 const App = () => {
   const [channels, setChannels] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [isSendMessage, setIsSendMessage] = useState(false);
 
   useEffect(() => {
     const fetchChannels = async () => {
@@ -33,8 +34,13 @@ const App = () => {
       }
     };
     fetchChannels();
-  }, []);
-  if (loading) return <Spin />;
+  }, [isSendMessage]);
+
+  const sendMessage = () => {
+    setIsSendMessage(!isSendMessage);
+  };
+
+  // if (loading) return <Loading />;
   return (
     <Router>
       <Layout>
@@ -69,31 +75,33 @@ const App = () => {
             </div>
 
             <div className="list_channel_inter">
-              {channels &&
-                channels.map((channel) => (
-                  <Link to={"/" + channel.channel_id}>
-                    <div>
-                      <Channel
-                        name={channel.channel_name}
-                        avatar={channel.author.avatar}
-                        lastMessage={channel.last_message.text}
-                        LMTime="20:20"
-                      />
-                    </div>
-                  </Link>
-                ))}
+              {channels?.map((channel) => (
+                <Link to={"/messages?channel_id=" + channel.channel_id}>
+                  <div>
+                    <Channel
+                      name={channel.channel_name}
+                      avatar={channel.avatar || channel.author.avatar}
+                      lastMessage={channel.last_message.text}
+                      LMTime="20:20"
+                    />
+                  </div>
+                </Link>
+              ))}
             </div>
           </div>
         </Sider>
         <Layout>
           <Header>
-            <HeaderChat />
+            <HeaderChat defaultChannel={channels[0]} />
           </Header>
           <Content>
-            <ChatView />
+            <ChatView
+              defaultChannel={channels[0]}
+              isSendMessage={isSendMessage}
+            />
           </Content>
           <Footer>
-            <FooterChat />
+            <FooterChat sendMessage={sendMessage} />
           </Footer>
         </Layout>
       </Layout>

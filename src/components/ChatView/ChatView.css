@@ -1,10 +1,10 @@
 .chat-view-message {
   width: 100%;
-  overflow-y: auto;
-  overflow-x: auto;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column-reverse;
   margin-bottom: 32px;
   min-height: 0;
-
   flex: 1 1 0%;
 }
 
@@ -14,28 +14,22 @@
   flex-direction: column;
 }
 
-/* .group-message {
-  width: 80%;
-  flex-direction: column;
-} */
-/* .message-content {
-  max-width: 60%;
-  display: flex;
-  align-items: flex-start;
-  flex-direction: column;
-} */
-
 .message-text {
   background: #f3f2f8;
   color: black;
   border-radius: 10px;
   padding: 6px 12px;
   margin: 2px 0 0;
-  width: max-content;
+  width: fit-content;
+  /* max-width: 800px; */
+  word-break: break-word;
+  max-width: 100%;
 }
 
 .message-sender {
-  align-self: flex-end;
+  /* align-self: flex-end; */
+  display: flex;
+  flex-direction: row-reverse;
 }
 
 .message-sender .message-avatar {
@@ -71,4 +65,28 @@
   width: 100%;
   border-radius: 10px !important;
   object-fit: cover;
+}
+
+.message-text p {
+  margin: 0;
+}
+
+.message-sender .message-content {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+
+.message-attachment {
+  margin: 3px 0 0;
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+
+.group-message {
+  max-width: 56%;
+}
+
+.ant-image {
+  margin: 0 2px 2px 0;
 }

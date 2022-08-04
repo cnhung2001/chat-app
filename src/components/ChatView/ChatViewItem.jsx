@@ -1,6 +1,8 @@
 import React from "react";
 import dayjs from "dayjs";
+import ReactMarkdown from "react-markdown";
 import "./ChatView.css";
+import { Image } from "antd";
 var relativeTime = require("dayjs/plugin/relativeTime");
 require("dayjs/locale/vi");
 dayjs.locale("vi");
@@ -34,7 +36,7 @@ const ChatViewItem = ({ message, isGroup }) => {
           <div className="message-attachment">
             {message.attachments?.map((file) =>
               file.mime.includes("image") ? (
-                <img src={file.url} alt="" />
+                <Image src={file.url} alt="" />
               ) : (
                 <video poster={file.thumbnail} controls>
                   <source src={file.url}></source>
@@ -43,7 +45,11 @@ const ChatViewItem = ({ message, isGroup }) => {
             )}
           </div>
 
-          {message.text && <div className="message-text">{message.text}</div>}
+          {message.text && (
+            <div className="message-text">
+              <ReactMarkdown>{message.text}</ReactMarkdown>
+            </div>
+          )}
         </div>
       </div>
       {/* {!isGroup && (
