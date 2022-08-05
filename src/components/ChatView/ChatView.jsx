@@ -34,7 +34,7 @@ const ChatView = ({ defaultChannel, isSendMessage }) => {
 
   if (loading) return <Loading />;
   const token =
-    "c_m9jmyhcalkxytkut6nfqnuzvmoombgwd1h3lvg9z653lh1hyiz7qxhaqgmmsldwg";
+    "c_5l5d7qrwkjpakxceyonfarvqnivhheo2di6man4jov79vznsdluggsowuyr34b0p";
 
   const ws = new WebSocket(
     `wss://ws.ghtk.vn/ws/chat?Authorization=${token}&appType=gchat&appVersion=2022-07-29%2C02%3A14%3A08&device=web&deviceId=zhXaUEkd5S0zxjrNPScW&source=chats`
@@ -47,6 +47,25 @@ const ChatView = ({ defaultChannel, isSendMessage }) => {
   ws.onmessage = function (e) {
     let message = JSON.parse(e.data);
     console.log(message);
+    if (message.event === "message") {
+      const lastMessage = {
+        attachments: message.data.attachments,
+        channel_id: message.data.channel_id,
+        channel_mode: message.data.channel_mode,
+        channel_type: message.data.channel_type,
+        created_at: message.data.created_at,
+        id: message.data.id,
+        is_pin: message.data.is_pin,
+        msg_type: message.data.msg_type,
+        ref_id: message.data.ref_id,
+        score: message.data.score,
+        sender: message.data.sender,
+        status: message.data.status,
+        text: message.data.text,
+        total_seen: message.data.total_seen,
+      };
+      // setMessages(message.data.text);
+    }
   };
 
   return (

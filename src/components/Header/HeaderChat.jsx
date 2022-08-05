@@ -2,7 +2,7 @@ import { EllipsisOutlined } from "@ant-design/icons";
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { fetchData } from "../../utils/fetchData";
-import "./header.css";
+import "./Header.css";
 
 const HeaderChat = ({ defaultChannel }) => {
   let [searchParams] = useSearchParams();
