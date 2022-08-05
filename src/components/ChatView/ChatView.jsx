@@ -11,10 +11,6 @@ const ChatView = ({ defaultChannel, isSendMessage }) => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    document
-      .querySelector("#flag-scroll")
-      .scrollIntoView({ behavior: "smooth", block: "start" });
-
     const fetchMessages = async () => {
       try {
         setLoading(true);
@@ -37,6 +33,21 @@ const ChatView = ({ defaultChannel, isSendMessage }) => {
   }, [searchParams, isSendMessage]);
 
   if (loading) return <Loading />;
+  const token =
+    "c_m9jmyhcalkxytkut6nfqnuzvmoombgwd1h3lvg9z653lh1hyiz7qxhaqgmmsldwg";
+
+  const ws = new WebSocket(
+    `wss://ws.ghtk.vn/ws/chat?Authorization=${token}&appType=gchat&appVersion=2022-07-29%2C02%3A14%3A08&device=web&deviceId=zhXaUEkd5S0zxjrNPScW&source=chats`
+  );
+
+  ws.onopen = function () {
+    ws.send(`${token}|sub|chats_user_6801990813180061667`);
+  };
+
+  ws.onmessage = function (e) {
+    let message = JSON.parse(e.data);
+    console.log(message);
+  };
 
   return (
     <div className="chat-view-message">
@@ -58,7 +69,6 @@ const ChatView = ({ defaultChannel, isSendMessage }) => {
               </>
             );
           })}
-        <div id="flag-scroll"></div>
       </div>
     </div>
   );

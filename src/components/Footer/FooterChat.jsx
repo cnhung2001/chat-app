@@ -70,8 +70,8 @@ const FooterChat = ({ sendMessage }) => {
   const [messageText, setMessageText] = useState("");
   const [files, setFiles] = useState([]);
   const fileInputRef = useRef();
-  const [selectedFile, setSelectedFile] = useState();
-  const [preview, setPreview] = useState();
+  // const [selectedFile, setSelectedFile] = useState();
+  // const [preview, setPreview] = useState();
 
   // create a preview as a side effect, whenever selected file is changed
   // useEffect(() => {
