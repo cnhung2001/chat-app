@@ -1,5 +1,5 @@
 import React from "react";
-import "../../CSS/channelTools.css"
+import "./channelTools.css"
 
 const ChannelTools = () => {
     return (
