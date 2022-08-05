@@ -8,6 +8,7 @@ import { Badge, Layout } from "antd";
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 import "./App.css";
+import { EllipsisOutlined } from "@ant-design/icons";
 import Channel from "./components/Channel/Channel.jsx";
 import ChatView from "./components/ChatView/ChatView";
 import FooterChat from "./components/Footer/FooterChat";
@@ -15,6 +16,7 @@ import HeaderChat from "./components/Header/HeaderChat";
 import ChannelTools from "./components/ChannelTools/channelTools";
 import HiddenSidebar from "./components/hiddenSidebar/hiddenSidebar";
 import { fetchData } from "./utils/fetchData";
+import ChatViewInfor from "./components/ChatViewInfor/ChatViewInfor";
 
 const { Header, Sider, Content, Footer } = Layout;
 
@@ -22,6 +24,7 @@ const App = () => {
   const [channels, setChannels] = useState([]);
   const [loading, setLoading] = useState(false);
   const [isSendMessage, setIsSendMessage] = useState(false);
+  const [collapsed, setCollapsed] = useState(false);
 
   useEffect(() => {
     const fetchChannels = async () => {
@@ -90,11 +93,17 @@ const App = () => {
             </div>
           </div>
         </Sider>
-        <Layout>
-          <Header>
+        <Layout className="site-layout">
+          <Header className="site-layout-background" style={{ padding: 10, fontSize: '28px' }}>
             <HeaderChat defaultChannel={channels[0]} />
+            {React.createElement(collapsed ? EllipsisOutlined : EllipsisOutlined, {
+              className: 'trigger',
+              onClick: () => setCollapsed(!collapsed),
+            })}
           </Header>
-          <Content>
+
+          <Content className="site-layout-background">
+
             <ChatView
               defaultChannel={channels[0]}
               isSendMessage={isSendMessage}
@@ -104,6 +113,9 @@ const App = () => {
             <FooterChat sendMessage={sendMessage} />
           </Footer>
         </Layout>
+        <Sider width={385} trigger={null} collapsible collapsed={collapsed} collapsedWidth={0}>
+          <ChatViewInfor />
+        </Sider>
       </Layout>
     </Router>
   );

@@ -41,7 +41,7 @@ const HeaderChat = ({ defaultChannel }) => {
         </div>
       </div>
       <div className="header-right">
-        <EllipsisOutlined style={{ fontSize: 26 }} />
+
       </div>
     </div>
   );
