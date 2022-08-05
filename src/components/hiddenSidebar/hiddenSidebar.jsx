@@ -2,7 +2,7 @@ import { Drawer } from 'antd';
 import { Badge } from "antd";
 import { useState } from 'react';
 import { MenuOutlined } from "@ant-design/icons";
-import "../../CSS/hiddenSidebar.css"
+import "./hiddenSidebar.css"
 
 const HiddenSidebar = () => {
     const [visible, setVisible] = useState(false);
