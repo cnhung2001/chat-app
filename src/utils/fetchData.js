@@ -4,7 +4,7 @@ export const fetchData = async (url) => {
   const config = {
     headers: {
       Authorization:
-        "Bearer c_wvczm21xwv13wthbnnpnylxoiuquy8y7imrgalnosgqnduuudlt1qcblne1vgzhr",
+        "Bearer c_7rb24s1fkedxrdtwps30wsfcv7j37g4sqpejfam9zmiigy5zaddznix6ikiypgsb",
     },
   };
 

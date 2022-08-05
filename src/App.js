@@ -1,21 +1,22 @@
 import {
   BellOutlined,
   DownOutlined,
-  MenuOutlined,
   SearchOutlined,
 } from "@ant-design/icons";
-import { Badge, Layout } from "antd";
+import { Layout } from "antd";
 import React, { useEffect, useState } from "react";
 import {
   BrowserRouter as Router,
   Link
 } from "react-router-dom";
 import "./App.css";
-import Channel from "./components/channel.jsx";
+import Channel from "./components/ChannelList/channel.jsx";
 import { fetchData } from "./utils/fetchData";
 import ChatView from "./components/ChatView/ChatView";
 import FooterChat from "./components/Footer/FooterChat";
 import HeaderChat from "./components/Header/HeaderChat";
+import HiddenSidebar from "./components/ChannelList/hiddenSidebar";
+import ChannelTools from "./components/ChannelList/channelTools";
 
 const { Header, Sider, Content, Footer } = Layout;
 
@@ -44,9 +45,7 @@ const App = () => {
         <Sider width={340}>
           <div className="header-channel-list">
             <div className="header-left">
-              <Badge count={5}>
-                <MenuOutlined style={{ fontSize: 18 }} />
-              </Badge>
+              <HiddenSidebar />
               <div className="name-website" title="Chat nội bộ">
                 Chat nội bộ
               </div>
@@ -70,7 +69,7 @@ const App = () => {
                 <DownOutlined style={{ fontSize: 10, marginLeft: "3px" }} />
               </span>
             </div>
-
+            <ChannelTools />
             <div className="list_channel_inter">
               {channels &&
                 channels.map((channel) => 

@@ -1,5 +1,5 @@
 import React from "react";
-import "../CSS/channel.css";
+import "../../CSS/channel.css";
 
 const Channel = (props) => {
   const { avatar, name, lastMessage, LMTime } = props;
