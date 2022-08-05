@@ -10,7 +10,11 @@
 }
 
 .channel_sum:hover {
-  background-color: rgba(199, 237, 252, 0.25) !important;
+  background-color: #eaf7fa;
+}
+
+.channel_sum:focus {
+  background-color: rgb(214, 242, 251);
 }
 
 .avatar {
@@ -44,7 +48,7 @@
   white-space: nowrap;
   overflow: hidden;
   display: inline-block;
-  max-width: 85%;
+  width: 85%;
   vertical-align: top;
 }
 

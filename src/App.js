@@ -12,6 +12,8 @@ import Channel from "./components/Channel/Channel.jsx";
 import ChatView from "./components/ChatView/ChatView";
 import FooterChat from "./components/Footer/FooterChat";
 import HeaderChat from "./components/Header/HeaderChat";
+import ChannelTools from "./components/ChannelTools/channelTools";
+import HiddenSidebar from "./components/hiddenSidebar/hiddenSidebar";
 import { fetchData } from "./utils/fetchData";
 
 const { Header, Sider, Content, Footer } = Layout;
@@ -47,9 +49,7 @@ const App = () => {
         <Sider width={340}>
           <div className="header-channel-list">
             <div className="header-left">
-              <Badge count={5}>
-                <MenuOutlined style={{ fontSize: 18 }} />
-              </Badge>
+              <HiddenSidebar />
               <div className="name-website" title="Chat nội bộ">
                 Chat nội bộ
               </div>
@@ -73,7 +73,7 @@ const App = () => {
                 <DownOutlined style={{ fontSize: 10, marginLeft: "3px" }} />
               </span>
             </div>
-
+            <ChannelTools />
             <div className="list_channel_inter">
               {channels?.map((channel) => (
                 <Link to={"/messages?channel_id=" + channel.channel_id}>
@@ -82,7 +82,7 @@ const App = () => {
                       name={channel.channel_name}
                       avatar={channel.avatar || channel.author.avatar}
                       lastMessage={channel.last_message.text}
-                      LMTime="20:20"
+                      LMTime={channel.last_message.created_at.slice(5, 10)}
                     />
                   </div>
                 </Link>

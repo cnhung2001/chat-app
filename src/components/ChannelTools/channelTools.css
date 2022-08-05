@@ -1,0 +1,17 @@
+.channel_tools {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 8px;
+    color: #069255;
+    font-size: 18px;
+    border-bottom: 1px solid hsla(0, 0%, 91%, 0.4588235294117647);
+}
+
+.new_channel_tool .channel_tool_action {
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.new_channel_tool{
+    margin-left: 1%;
+}

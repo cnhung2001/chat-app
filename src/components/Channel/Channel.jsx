@@ -7,7 +7,7 @@ const Channel = (props) => {
   const { avatar, name, lastMessage, LMTime } = props;
 
   return (
-    <div className="channel_sum">
+    <div className="channel_sum" tabindex="1">
       <div className="channel_avatar">
         <Avatar src={avatar} size={52} />
       </div>
