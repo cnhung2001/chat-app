@@ -5,10 +5,11 @@ import ChatViewItem from "./ChatViewItem";
 import "./ChatView.css";
 import Loading from "../common/Loading/Loading";
 
-const ChatView = ({ defaultChannel, isSendMessage }) => {
+const ChatView = ({ defaultChannel, isSendMessage, sendMessage }) => {
   let [searchParams] = useSearchParams();
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [lastMessage, setLastMessage] = useState();
 
   useEffect(() => {
     const fetchMessages = async () => {
@@ -22,6 +23,7 @@ const ChatView = ({ defaultChannel, isSendMessage }) => {
         const sortedMessage = data.sort(
           (a, b) => new Date(a.created_at) - new Date(b.created_at)
         );
+        // console.log("messages", sortedMessage);
         setMessages(sortedMessage);
       } catch (error) {
         console.log(error);
@@ -32,41 +34,53 @@ const ChatView = ({ defaultChannel, isSendMessage }) => {
     fetchMessages();
   }, [searchParams, isSendMessage]);
 
-  if (loading) return <Loading />;
-  const token =
-    "c_5l5d7qrwkjpakxceyonfarvqnivhheo2di6man4jov79vznsdluggsowuyr34b0p";
-
-  const ws = new WebSocket(
-    `wss://ws.ghtk.vn/ws/chat?Authorization=${token}&appType=gchat&appVersion=2022-07-29%2C02%3A14%3A08&device=web&deviceId=zhXaUEkd5S0zxjrNPScW&source=chats`
-  );
-
-  ws.onopen = function () {
-    ws.send(`${token}|sub|chats_user_6801990813180061667`);
-  };
-
-  ws.onmessage = function (e) {
-    let message = JSON.parse(e.data);
-    console.log(message);
-    if (message.event === "message") {
-      const lastMessage = {
-        attachments: message.data.attachments,
-        channel_id: message.data.channel_id,
-        channel_mode: message.data.channel_mode,
-        channel_type: message.data.channel_type,
-        created_at: message.data.created_at,
-        id: message.data.id,
-        is_pin: message.data.is_pin,
-        msg_type: message.data.msg_type,
-        ref_id: message.data.ref_id,
-        score: message.data.score,
-        sender: message.data.sender,
-        status: message.data.status,
-        text: message.data.text,
-        total_seen: message.data.total_seen,
-      };
-      // setMessages(message.data.text);
+  useEffect(() => {
+    if (messages.length) {
+      const newMessages = [...messages];
+      newMessages.push(lastMessage);
+      setMessages(newMessages);
+      sendMessage(true);
     }
-  };
+  }, [lastMessage]);
+
+  useEffect(() => {
+    const token =
+      "c_rupvuirvek2iflhhyclsdelz82gt0tjfzjwx4ctshjebxfx5qri5iqjq5yd8rjkc";
+
+    const ws = new WebSocket(
+      `wss://ws.ghtk.vn/ws/chat?Authorization=${token}&appType=gchat&appVersion=2022-07-29%2C02%3A14%3A08&device=web&deviceId=zhXaUEkd5S0zxjrNPScW&source=chats`
+    );
+
+    ws.onopen = function () {
+      ws.send(`${token}|sub|chats_user_6801990813180061667`);
+    };
+
+    ws.onmessage = function (e) {
+      let message = JSON.parse(e.data);
+      console.log(message);
+      if (message.event === "message") {
+        const lastMessageData = {
+          attachments: message?.data.attachments,
+          channel_id: message?.data.channel_id,
+          channel_mode: message?.data.channel_mode,
+          channel_type: message?.data.channel_type,
+          created_at: message?.data.created_at,
+          id: message?.data.id,
+          is_pin: message?.data.is_pin,
+          msg_type: message?.data.msg_type,
+          ref_id: message?.data.ref_id,
+          score: message?.data.score,
+          sender: message?.data.sender,
+          status: message?.data.status,
+          text: message?.data.text,
+          total_seen: message?.data.total_seen,
+        };
+        setLastMessage(lastMessageData);
+      }
+    };
+  }, []);
+
+  if (loading && !lastMessage) return <Loading />;
 
   return (
     <div className="chat-view-message">

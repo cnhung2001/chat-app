@@ -8,8 +8,8 @@ import {
   UserOutlined,
 } from "@ant-design/icons";
 import { Dropdown, Menu, message } from "antd";
+import React, { useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import React, { useEffect, useRef, useState } from "react";
 import { fetchData } from "../../utils/fetchData";
 import "./Footer.css";
 
@@ -69,6 +69,7 @@ const FooterChat = ({ sendMessage }) => {
   let [searchParams] = useSearchParams();
   const [messageText, setMessageText] = useState("");
   const [files, setFiles] = useState([]);
+  const [sendIconColor, setSendIconColor] = useState("rgb(204,204,204)");
   const fileInputRef = useRef();
   // const [selectedFile, setSelectedFile] = useState();
   // const [preview, setPreview] = useState();
@@ -88,6 +89,11 @@ const FooterChat = ({ sendMessage }) => {
   // }, [selectedFile]);
 
   const handleMessageTextChange = (e) => {
+    if (e.target.value !== "") {
+      setSendIconColor("#14a05b");
+    } else {
+      setSendIconColor("rgb(204,204,204)");
+    }
     setMessageText(e.target.value);
   };
 
@@ -113,9 +119,11 @@ const FooterChat = ({ sendMessage }) => {
 
       sendMessage(true);
       setMessageText("");
+      if (files.length) {
+        setFiles([]);
+      }
     } catch (error) {
       console.log(error);
-      message.error("Có lỗi khi gửi tin nhắn");
     }
   };
 
@@ -175,7 +183,7 @@ const FooterChat = ({ sendMessage }) => {
           <div className="footer-view-rep">
             <SendOutlined
               onClick={handleSendMessage}
-              style={{ fontSize: 28, color: "rgb(204,204,204)" }}
+              style={{ fontSize: 28, color: sendIconColor }}
             />
           </div>
         </div>
