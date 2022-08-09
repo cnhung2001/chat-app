@@ -4,7 +4,7 @@
 }
 
 .ant-drawer-content-wrapper {
-    width: 340px;
+    width: 340px !important;
 }
 
 .ant-drawer-body {
