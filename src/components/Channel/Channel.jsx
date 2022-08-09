@@ -4,7 +4,7 @@ import ReactMarkdown from "react-markdown";
 import "./Channel.css";
 
 const Channel = (props) => {
-  const { avatar, name, lastMessage, LMTime } = props;
+  const { avatar, name, lastMessage, LMTime, attachment } = props;
 
   return (
     <div className="channel_sum" tabindex="1">
@@ -15,7 +15,7 @@ const Channel = (props) => {
         <div className="channel_name">{name}</div>
         <div className="LM">
           <div className="lastMessage">
-            <ReactMarkdown>{lastMessage}</ReactMarkdown>
+            {attachment!=null ? attachment : lastMessage}
           </div>
           <div className="LMTime">{LMTime}</div>
         </div>
