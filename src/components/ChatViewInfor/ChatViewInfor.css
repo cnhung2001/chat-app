@@ -7,6 +7,8 @@
   -webkit-flex-direction: column;
   flex-direction: column;
   position: relative;
+  overflow: scroll;
+  max-height: 100%;
 }
 .channel-info-container {
   background-color: rgb(161, 161, 161);
