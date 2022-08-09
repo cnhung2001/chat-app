@@ -25,6 +25,8 @@ const App = () => {
   const [loading, setLoading] = useState(false);
   const [isSendMessage, setIsSendMessage] = useState(false);
   const [collapsed, setCollapsed] = useState(false);
+  const anh = "image";
+  const vid = "video";
 
   useEffect(() => {
     const fetchChannels = async () => {
@@ -86,6 +88,7 @@ const App = () => {
                       avatar={channel.avatar || channel.author.avatar}
                       lastMessage={channel.last_message.text}
                       LMTime={channel.last_message.created_at.slice(5, 10)}
+                      attachment={channel.last_message.attachments?.map((ext) => (ext.mime.includes(anh) || ext.mime.includes(vid)) ? "MEDIA" : null)}
                     />
                   </div>
                 </Link>
