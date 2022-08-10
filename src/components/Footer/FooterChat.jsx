@@ -7,10 +7,13 @@ import {
   TagsOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import { Dropdown, Menu, message } from "antd";
+import { Dropdown, Menu, Modal, Upload } from "antd";
+import React, { useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import React, { useEffect, useRef, useState } from "react";
 import { fetchData } from "../../utils/fetchData";
+
+import { getBase64 } from "../../utils/getBase64";
+
 import "./Footer.css";
 
 const menu = (
@@ -68,26 +71,19 @@ const menu = (
 const FooterChat = ({ sendMessage }) => {
   let [searchParams] = useSearchParams();
   const [messageText, setMessageText] = useState("");
-  const [files, setFiles] = useState([]);
-  const fileInputRef = useRef();
-  const [selectedFile, setSelectedFile] = useState();
-  const [preview, setPreview] = useState();
+  const [sendIconColor, setSendIconColor] = useState("rgb(204,204,204)");
 
-  // create a preview as a side effect, whenever selected file is changed
-  // useEffect(() => {
-  //   if (!selectedFile) {
-  //     setPreview(undefined);
-  //     return;
-  //   }
-
-  //   const objectUrl = URL.createObjectURL(selectedFile);
-  //   setPreview(objectUrl);
-
-  //   // free memory when ever this component is unmounted
-  //   return () => URL.revokeObjectURL(objectUrl);
-  // }, [selectedFile]);
+  const [previewVisible, setPreviewVisible] = useState(false);
+  const [previewImage, setPreviewImage] = useState("");
+  const [previewTitle, setPreviewTitle] = useState("");
+  const [fileList, setFileList] = useState([]);
 
   const handleMessageTextChange = (e) => {
+    if (e.target.value !== "") {
+      setSendIconColor("#14a05b");
+    } else {
+      setSendIconColor("rgb(204,204,204)");
+    }
     setMessageText(e.target.value);
   };
 
@@ -95,9 +91,9 @@ const FooterChat = ({ sendMessage }) => {
     e.preventDefault();
     try {
       let formData = new FormData();
-      for (let i = 0; i < files.length; ++i) {
-        formData.append("attachment", files[i]);
-      }
+      fileList.forEach((file) => {
+        formData.append("attachment", file.originFileObj);
+      });
       formData.append("channel_id", searchParams.get("channel_id"));
       formData.append("msg_type", "text");
       formData.append("text", messageText);
@@ -113,19 +109,61 @@ const FooterChat = ({ sendMessage }) => {
 
       sendMessage(true);
       setMessageText("");
+      if (fileList.length) {
+        setFileList([]);
+      }
     } catch (error) {
       console.log(error);
-      message.error("Có lỗi khi gửi tin nhắn");
     }
   };
 
-  const handleFilesChange = (e) => {
-    const files = e.target.files;
-    setFiles(files);
+  const handleCancel = () => setPreviewVisible(false);
+
+  const handlePreview = async (file) => {
+    if (!file.url && !file.preview) {
+      file.preview = await getBase64(file.originFileObj);
+    }
+
+    setPreviewImage(file.url || file.preview);
+    setPreviewVisible(true);
+    setPreviewTitle(
+      file.name || file.url.substring(file.url.lastIndexOf("/") + 1)
+    );
   };
+
+  const handleChange = ({ fileList: newFileList }) => setFileList(newFileList);
 
   return (
     <div className="chat-view-footer">
+      <Upload
+        multiple
+        listType="picture-card"
+        fileList={fileList}
+        onPreview={handlePreview}
+        onChange={handleChange}
+        beforeUpload={() => {
+          return false;
+        }}
+      >
+        <PictureOutlined
+          className="send-icon"
+          style={{ fontSize: 24, color: "#14a05b" }}
+        />
+      </Upload>
+      <Modal
+        visible={previewVisible}
+        title={previewTitle}
+        footer={null}
+        onCancel={handleCancel}
+      >
+        <img
+          alt="preview"
+          style={{
+            width: "100%",
+          }}
+          src={previewImage}
+        />
+      </Modal>
       <div className="foot-view-expand"></div>
       <div className="footer-view-input">
         <div className="footer-view-more">
@@ -150,23 +188,7 @@ const FooterChat = ({ sendMessage }) => {
               </form>
             </div>
             <div className="menu-footer-icon">
-              <div className="footer-icon">
-                <input
-                  onChange={handleFilesChange}
-                  ref={fileInputRef}
-                  hidden
-                  type="file"
-                  name=""
-                  multiple
-                  className="file-input"
-                />
-                {
-                  <PictureOutlined
-                    onClick={() => fileInputRef?.current?.click()}
-                    style={{ fontSize: 24, color: "#14a05b" }}
-                  />
-                }
-              </div>
+              <div className="footer-icon"></div>
               <div className="footer-icon">
                 <SmileOutlined style={{ fontSize: 24, color: "#14a05b" }} />
               </div>
@@ -175,7 +197,10 @@ const FooterChat = ({ sendMessage }) => {
           <div className="footer-view-rep">
             <SendOutlined
               onClick={handleSendMessage}
-              style={{ fontSize: 28, color: "rgb(204,204,204)" }}
+              style={{
+                fontSize: 28,
+                color: fileList.length ? "#14a05b" : sendIconColor,
+              }}
             />
           </div>
         </div>

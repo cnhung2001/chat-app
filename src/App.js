@@ -1,22 +1,21 @@
 import {
   BellOutlined,
   DownOutlined,
-  MenuOutlined,
+  EllipsisOutlined,
   SearchOutlined,
 } from "@ant-design/icons";
-import { Badge, Layout } from "antd";
+import { Layout } from "antd";
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 import "./App.css";
-import { EllipsisOutlined } from "@ant-design/icons";
 import Channel from "./components/Channel/Channel.jsx";
+import ChannelTools from "./components/ChannelTools/channelTools";
 import ChatView from "./components/ChatView/ChatView";
+import ChatViewInfor from "./components/ChatViewInfor/ChatViewInfor";
 import FooterChat from "./components/Footer/FooterChat";
 import HeaderChat from "./components/Header/HeaderChat";
-import ChannelTools from "./components/ChannelTools/channelTools";
 import HiddenSidebar from "./components/hiddenSidebar/hiddenSidebar";
 import { fetchData } from "./utils/fetchData";
-import ChatViewInfor from "./components/ChatViewInfor/ChatViewInfor";
 
 const { Header, Sider, Content, Footer } = Layout;
 
@@ -88,7 +87,13 @@ const App = () => {
                       avatar={channel.avatar || channel.author.avatar}
                       lastMessage={channel.last_message.text}
                       LMTime={channel.last_message.created_at.slice(5, 10)}
-                      attachment={channel.last_message.attachments?.map((ext) => (ext.mime.includes(anh) || ext.mime.includes(vid)) ? "MEDIA" : null)}
+                      attachment={channel.last_message.attachments?.map((ext) =>
+                        ext.mime.includes(anh) || ext.mime.includes(vid)
+                          ? "MEDIA"
+                          : null
+                      )}
+                      isSendMessage={isSendMessage}
+                      lastMessageUserId={channel.last_message.sender.id}
                     />
                   </div>
                 </Link>
@@ -97,26 +102,38 @@ const App = () => {
           </div>
         </Sider>
         <Layout className="site-layout">
-          <Header className="site-layout-background" style={{ padding: 10, fontSize: '28px' }}>
+          <Header
+            className="site-layout-background"
+            style={{ padding: 10, fontSize: "28px" }}
+          >
             <HeaderChat defaultChannel={channels[0]} />
-            {React.createElement(collapsed ? EllipsisOutlined : EllipsisOutlined, {
-              className: 'trigger',
-              onClick: () => setCollapsed(!collapsed),
-            })}
+            {React.createElement(
+              collapsed ? EllipsisOutlined : EllipsisOutlined,
+              {
+                className: "trigger",
+                onClick: () => setCollapsed(!collapsed),
+              }
+            )}
           </Header>
 
           <Content className="site-layout-background">
-
             <ChatView
               defaultChannel={channels[0]}
               isSendMessage={isSendMessage}
+              sendMessage={sendMessage}
             />
           </Content>
           <Footer>
             <FooterChat sendMessage={sendMessage} />
           </Footer>
         </Layout>
-        <Sider width={385} trigger={null} collapsible collapsed={collapsed} collapsedWidth={0}>
+        <Sider
+          width={385}
+          trigger={null}
+          collapsible
+          collapsed={collapsed}
+          collapsedWidth={0}
+        >
           <ChatViewInfor />
         </Sider>
       </Layout>
