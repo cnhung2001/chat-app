@@ -18,8 +18,7 @@ const ChatView = ({ defaultChannel, isSendMessage, sendMessage }) => {
       try {
         setLoading(true);
         const data = await fetchData(
-          `https://chat.ghtk.vn/api/v3/messages?channel_id=${
-            searchParams.get("channel_id") || defaultChannel.channel_id
+          `https://chat.ghtk.vn/api/v3/messages?channel_id=${searchParams.get("channel_id") || defaultChannel.channel_id
           }&limit=50`
         );
         const sortedMessage = data.sort(
@@ -110,7 +109,7 @@ const ChatView = ({ defaultChannel, isSendMessage, sendMessage }) => {
               <>
                 <ChatViewItem
                   message={message}
-                  key={message.id}
+                  key={}
                   isGroup={isGroup}
                 />
               </>
