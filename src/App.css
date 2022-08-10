@@ -117,3 +117,7 @@
   overflow-y: scroll;
   max-height: 80%;
 }
+
+::-webkit-scrollbar {
+  display: none;
+}
