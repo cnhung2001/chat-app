@@ -78,8 +78,8 @@ const App = () => {
             </div>
             <ChannelTools />
             <div className="list_channel_inter">
-              {channels?.map((channel) => (
-                <Link to={"/messages?channel_id=" + channel.channel_id}>
+              {channels?.map((channel, index) => (
+                <Link key={'list-' + index} to={"/messages?channel_id=" + channel.channel_id}>
                   <div>
                     <Channel
                       name={channel.channel_name}
@@ -113,8 +113,8 @@ const App = () => {
             <FooterChat sendMessage={sendMessage} />
           </Footer>
         </Layout>
-        <Sider width={385} trigger={null} collapsible collapsed={collapsed} collapsedWidth={0}>
-          <ChatViewInfor />
+        <Sider width={0} trigger={null} collapsible collapsed={collapsed} collapsedWidth={385}>
+          <ChatViewInfor defaultChannel={channels[0]} />
         </Sider>
       </Layout>
     </Router>

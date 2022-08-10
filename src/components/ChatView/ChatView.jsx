@@ -19,8 +19,7 @@ const ChatView = ({ defaultChannel, isSendMessage }) => {
       try {
         setLoading(true);
         const data = await fetchData(
-          `https://chat.ghtk.vn/api/v3/messages?channel_id=${
-            searchParams.get("channel_id") || defaultChannel.channel_id
+          `https://chat.ghtk.vn/api/v3/messages?channel_id=${searchParams.get("channel_id") || defaultChannel.channel_id
           }&limit=50`
         );
         const sortedMessage = data.sort(
@@ -49,13 +48,11 @@ const ChatView = ({ defaultChannel, isSendMessage }) => {
               isGroup = true;
 
             return (
-              <>
-                <ChatViewItem
-                  message={message}
-                  key={message.id}
-                  isGroup={isGroup}
-                />
-              </>
+              <ChatViewItem
+                message={message}
+                key={index}
+                isGroup={isGroup}
+              />
             );
           })}
         <div id="flag-scroll"></div>

@@ -34,11 +34,11 @@ const ChatViewItem = ({ message, isGroup }) => {
             <div className="message-title">{message.sender.fullname}</div>
           )}
           <div className="message-attachment">
-            {message.attachments?.map((file) =>
+            {message.attachments?.map((file, index) =>
               file.mime.includes("image") ? (
-                <Image src={file.url} alt="" />
+                <Image key={'img-' + index} src={file.url} alt="" />
               ) : (
-                <video poster={file.thumbnail} controls>
+                <video key={'vid-' + index} poster={file.thumbnail} controls>
                   <source src={file.url}></source>
                 </video>
               )

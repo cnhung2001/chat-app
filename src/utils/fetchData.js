@@ -9,7 +9,7 @@ export const fetchData = async (
   const defaultConfigs = {
     headers: {
       Authorization:
-        "Bearer c_m9jmyhcalkxytkut6nfqnuzvmoombgwd1h3lvg9z653lh1hyiz7qxhaqgmmsldwg",
+        "Bearer c_moojo6pnslhjp1nboj4mzd6p9pbaq1evedqmlf6vsfvvljiwh9f2sfmmy6hd2a2c",
     },
   };
 
