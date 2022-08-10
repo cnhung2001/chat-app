@@ -47,7 +47,7 @@ const ChatView = ({ defaultChannel, isSendMessage, sendMessage }) => {
 
   useEffect(() => {
     const token =
-      "c_69vp4ecd4ztr2x5b2gwd2nibfoqtmtqrmwzs5u2ryaa8eieemalgslmthacgw4gm";
+      "c_ftbdvan8z2pjd7jd0busjn2prrouawgbjucen9caidhuq26dkliavrsw6szxrczf";
 
     const ws = new WebSocket(
       `wss://ws.ghtk.vn/ws/chat?Authorization=${token}&appType=gchat&appVersion=2022-07-29%2C02%3A14%3A08&device=web&deviceId=zhXaUEkd5S0zxjrNPScW&source=chats`
