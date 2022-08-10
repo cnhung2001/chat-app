@@ -3,9 +3,10 @@
   overflow-y: scroll;
   display: flex;
   flex-direction: column-reverse;
-  margin-bottom: 32px;
+  padding-bottom: 100px;
   min-height: 0;
   flex: 1 1 0%;
+  position: relative;
 }
 
 .container-message {
@@ -89,4 +90,19 @@
 
 .ant-image {
   margin: 0 2px 2px 0;
+}
+
+.go-to-bottom {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 1px solid #c3c3c3;
+  position: fixed;
+  bottom: 100px;
+  padding: 12px;
+  right: 30px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
 }

@@ -1,14 +1,16 @@
+import { DownOutlined } from "@ant-design/icons";
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { fetchData } from "../../utils/fetchData";
-import ChatViewItem from "./ChatViewItem";
-import "./ChatView.css";
 import Loading from "../common/Loading/Loading";
+import "./ChatView.css";
+import ChatViewItem from "./ChatViewItem";
 
 const ChatView = ({ defaultChannel, isSendMessage, sendMessage }) => {
   let [searchParams] = useSearchParams();
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [showBackBottom, setShowBackBottom] = useState(false);
   const [lastMessage, setLastMessage] = useState();
 
   useEffect(() => {
@@ -32,7 +34,7 @@ const ChatView = ({ defaultChannel, isSendMessage, sendMessage }) => {
       }
     };
     fetchMessages();
-  }, [searchParams, isSendMessage]);
+  }, [searchParams, isSendMessage, defaultChannel]);
 
   useEffect(() => {
     if (messages.length) {
@@ -45,7 +47,7 @@ const ChatView = ({ defaultChannel, isSendMessage, sendMessage }) => {
 
   useEffect(() => {
     const token =
-      "c_rupvuirvek2iflhhyclsdelz82gt0tjfzjwx4ctshjebxfx5qri5iqjq5yd8rjkc";
+      "c_69vp4ecd4ztr2x5b2gwd2nibfoqtmtqrmwzs5u2ryaa8eieemalgslmthacgw4gm";
 
     const ws = new WebSocket(
       `wss://ws.ghtk.vn/ws/chat?Authorization=${token}&appType=gchat&appVersion=2022-07-29%2C02%3A14%3A08&device=web&deviceId=zhXaUEkd5S0zxjrNPScW&source=chats`
@@ -80,10 +82,22 @@ const ChatView = ({ defaultChannel, isSendMessage, sendMessage }) => {
     };
   }, []);
 
+  const handleGoToBottom = () => {
+    document.querySelector(".chat-view-message").scrollTo({ top: "100vh" });
+  };
+
+  const handleViewMessageScroll = (e) => {
+    if (
+      Math.abs(document.querySelector(".chat-view-message").scrollTop) >= 200
+    ) {
+      setShowBackBottom(true);
+    } else setShowBackBottom(false);
+  };
+
   if (loading && !lastMessage) return <Loading />;
 
   return (
-    <div className="chat-view-message">
+    <div className="chat-view-message" onScroll={handleViewMessageScroll}>
       <div className="container-message">
         {messages?.length > 0 &&
           messages.map((message, index) => {
@@ -103,6 +117,11 @@ const ChatView = ({ defaultChannel, isSendMessage, sendMessage }) => {
             );
           })}
       </div>
+      {showBackBottom && (
+        <div className="go-to-bottom" onClick={handleGoToBottom}>
+          <DownOutlined style={{ fontSize: 14, color: "#a7a6a6" }} />
+        </div>
+      )}
     </div>
   );
 };

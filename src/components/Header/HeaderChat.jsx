@@ -10,6 +10,10 @@ const HeaderChat = ({ defaultChannel }) => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setChannel(defaultChannel);
+  }, [defaultChannel]);
+
+  useEffect(() => {
     const fetchChannel = async () => {
       try {
         setLoading(true);
