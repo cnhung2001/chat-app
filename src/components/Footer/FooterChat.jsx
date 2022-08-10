@@ -11,7 +11,7 @@ import { Dropdown, Menu, message } from "antd";
 import { useSearchParams } from "react-router-dom";
 import React, { useEffect, useRef, useState } from "react";
 import { fetchData } from "../../utils/fetchData";
-import "./footer.css";
+import "./Footer.css";
 
 const menu = (
   <Menu
